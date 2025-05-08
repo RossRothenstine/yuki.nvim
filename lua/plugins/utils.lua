@@ -101,8 +101,6 @@ return {
   'tpope/vim-sleuth',
   {
     'numToStr/Comment.nvim',
-    opts = {
-      -- add any options here
-    },
+    opts = {},
   },
 }

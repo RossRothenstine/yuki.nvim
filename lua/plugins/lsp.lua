@@ -7,6 +7,7 @@ return {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
+      { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
       'folke/neodev.nvim',
     },
     config = function()
@@ -66,13 +67,14 @@ return {
       })
 
       require('mason-lspconfig').setup({
+        automatic_enable = false,
         -- Automatically install these LSP servers
         ensure_installed = {
           'clangd', -- C/C++
           'lua_ls', -- Lua
           'pyright', -- Python
           'rust_analyzer', -- Rust
-          'tsserver', -- TypeScript/JavaScript
+          'ts_ls', -- TypeScript/JavaScript
           'gopls', -- Go
           'html', -- HTML
           'cssls', -- CSS
