@@ -82,6 +82,32 @@ return {
         },
       })
 
+      lspconfig.clangd.setup({
+        cmd = {
+          'clangd',
+          '--background-index',
+          '--clang-tidy',
+          '--header-insertion=iwyu',
+          '--completion-style=detailed',
+          '--function-arg-placeholders',
+          '--fallback-style=llvm',
+        },
+        filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' },
+        root_dir = function(fname)
+          return require('lspconfig.util').root_pattern(
+            'compile_commands.json',
+            'compile_flags.txt',
+            '.git',
+            'CMakeLists.txt'
+          )(fname) or vim.fn.getcwd()
+        end,
+        init_options = {
+          usePlaceholders = true,
+          completeUnimported = true,
+          clangdFileStatus = true,
+        },
+      })
+
       lspconfig.gdscript.setup({})
 
       -- Install additional tools via Mason
