@@ -17,7 +17,7 @@ vim.opt.smartcase = true
 
 -- Appearance
 vim.opt.termguicolors = true
-vim.opt.signcolumn = "yes"
+vim.opt.signcolumn = 'yes'
 vim.opt.cmdheight = 1
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
@@ -33,13 +33,13 @@ vim.opt.wrap = false
 vim.opt.backup = false
 vim.opt.swapfile = false
 vim.opt.undofile = true
-vim.opt.undodir = vim.fn.stdpath("data") .. "/undodir"
+vim.opt.undodir = vim.fn.stdpath('data') .. '/undodir'
 vim.opt.updatetime = 300
 vim.opt.timeoutlen = 500
-vim.opt.completeopt = { "menuone", "noselect" }
+vim.opt.completeopt = { 'menuone', 'noselect' }
 
 -- Mouse
-vim.opt.mouse = "a"
+vim.opt.mouse = 'a'
 
 -- System clipboard
-vim.opt.clipboard = "unnamedplus"
+vim.opt.clipboard = 'unnamedplus'
