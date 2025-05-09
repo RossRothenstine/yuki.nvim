@@ -1,0 +1,18 @@
+{
+  "Ready": {
+    "prefix": "ready",
+    "body": [
+      "func _ready() -> void:",
+      "\t$1"
+    ]
+  },
+  "Export": {
+    "prefix": [
+      "ex",
+      "export"
+    ],
+    "body": [
+      "@export var ${1:name}: ${2:type}"
+    ]
+  }
+}
