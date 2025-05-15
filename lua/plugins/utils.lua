@@ -46,6 +46,7 @@ return {
           },
           use_libuv_file_watcher = true,
         },
+        shared_tree_across_tabs = true,
         window = {
           mappings = {
             ['<Tab>'] = function(state)
@@ -103,4 +104,5 @@ return {
     'numToStr/Comment.nvim',
     opts = {},
   },
+  'lewis6991/gitsigns.nvim'
 }

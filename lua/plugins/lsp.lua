@@ -34,23 +34,31 @@ return {
           -- Buffer local mappings.
           -- See `:help vim.lsp.*` for documentation on any of the below functions
           local opts = { buffer = ev.buf }
-          nmap('gD', vim.lsp.buf.declaration, opts)
-          nmap('gd', vim.lsp.buf.definition, opts)
-          nmap('K', vim.lsp.buf.hover, opts)
-          nmap('gi', vim.lsp.buf.implementation, opts)
-          nmap('<C-k>', vim.lsp.buf.signature_help, opts)
-          nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, opts)
-          nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, opts)
+          local with_description = function(opts, description)
+            local ret = {}
+            for k, v in pairs(opts) do
+              ret[k] = v
+            end
+            ret.desc = description
+            return ret
+          end
+          nmap('gD', vim.lsp.buf.declaration, with_description(opts, 'Go to declaration'))
+          nmap('gd', vim.lsp.buf.definition, with_description(opts, 'Go to definition'))
+          nmap('K', vim.lsp.buf.hover, with_description(opts, 'Hover'))
+          nmap('gi', vim.lsp.buf.implementation, with_description(opts, 'Go to implementation'))
+          nmap('<C-k>', vim.lsp.buf.signature_help, with_description(opts, 'Signature help'))
+          nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, with_description(opts, 'Add workspace folder'))
+          nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, with_description(opts, 'Remove workspace folder'))
           nmap('<leader>wl', function()
             print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-          end, opts)
-          nmap('<leader>D', vim.lsp.buf.type_definition, opts)
-          nmap('<leader>rn', vim.lsp.buf.rename, opts)
-          vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
-          nmap('gr', vim.lsp.buf.references, opts)
+          end, with_description(opts, 'List workspace folders'))
+          nmap('<leader>D', vim.lsp.buf.type_definition, with_description(opts, 'Type definition'))
+          nmap('<leader>rn', vim.lsp.buf.rename, with_description(opts, 'Rename'))
+          vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, { buffer = ev.buf, desc = 'Code action' })
+          nmap('gr', vim.lsp.buf.references, with_description(opts, 'References'))
           nmap('<leader>f', function()
             vim.lsp.buf.format { async = true }
-          end, opts)
+          end, with_description(opts, 'Format buffer'))
         end,
       })
 
@@ -70,15 +78,16 @@ return {
         automatic_enable = false,
         -- Automatically install these LSP servers
         ensure_installed = {
-          'clangd', -- C/C++
-          'lua_ls', -- Lua
-          'pyright', -- Python
+          'clangd',        -- C/C++
+          'lua_ls',        -- Lua
+          'pyright',       -- Python
           'rust_analyzer', -- Rust
-          'ts_ls', -- TypeScript/JavaScript
-          'gopls', -- Go
-          'html', -- HTML
-          'cssls', -- CSS
-          'jsonls', -- JSON
+          'ts_ls',         -- TypeScript/JavaScript
+          'gopls',         -- Go
+          'html',          -- HTML
+          'cssls',         -- CSS
+          'jsonls',        -- JSON,
+          'csharp_ls',     -- C#
         },
       })
 
@@ -113,11 +122,11 @@ return {
       -- Install additional tools via Mason
       require('mason-tool-installer').setup({
         ensure_installed = {
-          'clang-format', -- C/C++ formatter
-          'cpplint', -- C/C++ linter
+          'clang-format',          -- C/C++ formatter
+          'cpplint',               -- C/C++ linter
           -- 'cppcheck', -- C/C++ static analyzer
           'cmake-language-server', -- CMake language server
-          'codelldb', -- Debugger for C/C++
+          'codelldb',              -- Debugger for C/C++
         },
       })
 

@@ -13,7 +13,7 @@ return {
         typescript = { 'prettier' },
         json = { 'prettier' },
         yaml = { 'prettier' },
-        go = { 'gofmt' },
+        go = { 'goimports' },
         rust = { 'rustfmt' },
         gdscript = { 'gdformat' },
       },

@@ -66,3 +66,5 @@ map('n', '<leader>ex', ':Ex<CR>', { desc = 'Explore' })
 
 map('n', '<Tab>', ':tabnext<CR>', { silent = true })
 map('n', '<S-Tab>', ':tabprevious<CR>', { silent = true })
+
+map('n', '<Esc><Esc>', ':nohlsearch<CR>', { desc = 'Clear search highlights' })
