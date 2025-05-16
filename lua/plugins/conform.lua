@@ -16,6 +16,9 @@ return {
         go = { 'goimports' },
         rust = { 'rustfmt' },
         gdscript = { 'gdformat' },
+        html = { 'prettier' },
+        cs = { 'csharpier' },
+        xml = { 'xmlformat' },
       },
       formatters = {
         gdformat = {
@@ -24,6 +27,16 @@ return {
           args = function(self, ctx)
             return { '$FILENAME' }
           end,
+        },
+        csharpier = {
+          command = 'dotnet-csharpier',
+          args = { '--write-stdout' },
+          stdin = true,
+        },
+        xmlformat = {
+          command = 'xmlformat',
+          args = { '--selfclose', '-' },
+          stdin = true,
         },
       },
     })

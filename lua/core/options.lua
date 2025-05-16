@@ -43,3 +43,12 @@ vim.opt.mouse = 'a'
 
 -- System clipboard
 vim.opt.clipboard = 'unnamedplus'
+
+-- Rulers
+vim.opt.ruler = true
+local columns = {
+  '80',
+  '120',
+}
+vim.opt.colorcolumn = table.concat(columns, ',')
+vim.opt.showmode = false

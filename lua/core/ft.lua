@@ -1,5 +1,8 @@
 local ft = {
-  { ext = 'gd', name = 'gdscript' },
+  {
+    ext = 'gd',
+    name = 'gdscript',
+  },
 }
 
 for i, mapping in pairs(ft) do

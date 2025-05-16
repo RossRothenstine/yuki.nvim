@@ -6,6 +6,20 @@
           "gdscript"
         ],
         "path": "./gdscript.json"
+      },
+      {
+        "language": [
+          "csharp",
+          "cs"
+        ],
+        "path": "./cs.json"
+      },
+      {
+        "language": [
+          "csharp",
+          "cs"
+        ],
+        "path": "./chickensoft.json"
       }
     ]
   }

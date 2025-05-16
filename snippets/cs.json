@@ -1,0 +1,16 @@
+{
+  "Godot [Export]": {
+    "scope": "cs",
+    "prefix": ["export"],
+    "body": [
+      "[Export] ${1:public} ${2:Node} ${3:MyExport} { get; set; } = default!;"
+    ],
+    "description": "Godot [Export] attribute"
+  },
+  "Godot [Signal]": {
+    "scope": "cs",
+    "prefix": ["signal"],
+    "body": ["[Signal] public delegate void ${1:My}EventHandler($2);"],
+    "description": "Godot [Signal] attribute"
+  }
+}

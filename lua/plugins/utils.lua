@@ -104,5 +104,11 @@ return {
     'numToStr/Comment.nvim',
     opts = {},
   },
-  'lewis6991/gitsigns.nvim'
+  'lewis6991/gitsigns.nvim',
+  {
+    'xiyaowong/virtcolumn.nvim',
+    config = function()
+      vim.g.virtcolumn_char = '▕'
+    end,
+  },
 }
